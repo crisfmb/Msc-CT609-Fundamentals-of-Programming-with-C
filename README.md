@@ -1,1 +1,3 @@
 # Msc-CT609-Fundamentals-of-Programming-with-C
+
+This is intended as a foundational programming module, suitable for students with no previous experience of computer programming as well as those with moderate previous knowledge or knowledge of languages other than C. It will provide with a solid foundation in the key concepts of functional programming, as well as an appreciation of object-oriented programming. The emphasis is on applied problem-solving skills as well as on the theoretical concepts underlying the programming activity. Although the module focuses specifically on the C language, students who have successfully completed it will typically find learning other high-level languages relatively easy, having learned the important skills and concepts of programming.
