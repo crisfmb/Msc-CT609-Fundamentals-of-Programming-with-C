@@ -12,7 +12,7 @@ int main()
 
     while (count < 10)
     {
-        printf("Enter any number: \n");
+        printf("Enter a number: \n");
         scanf("%d", &number);
 
         if (number >= largnumber)

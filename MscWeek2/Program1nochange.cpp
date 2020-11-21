@@ -23,17 +23,9 @@ int main()
         }
 
         commission = sales / 100 * 9;
+        weeklypay = commission + 200;
 
-        printf("Enter the weekly pay for the Sales Person: ");
-        scanf("%f", &weeklypay);
-
-        if (weeklypay == -1)
-        {
-            return 0;
-        }
-        weeklypay = commission + weeklypay;
-
-        printf("The total Salary is: %.2f\n", weeklypay);
+        printf("he total Salary is: %.2f\n", weeklypay);
     }
 
     return 0;
