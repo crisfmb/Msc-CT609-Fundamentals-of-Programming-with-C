@@ -5,7 +5,7 @@ One large chemical company pays its salespeople on a commission basis. The sales
 
 */
 
-#include <stdio.h>   /*perform I/O operations. Tells the preprocessor to include the "stdio.h" header file to support input/output operations*/
+#include <stdio.h>   //perform I/O operations. Tells the preprocessor to include the "stdio.h" header file to support input/output operations
 #include <stdbool.h> /*Tells the pre-procesor to include the “stdbool.h” header file to support the use of Boolean data types used on the while*/
 
 int main() // initialize the main function
