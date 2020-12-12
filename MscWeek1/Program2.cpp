@@ -1,6 +1,6 @@
 /* Program read the radius of a circle and prints the circle's diameter, circumference and area */
 
-#include <stdio.h> /* perform I/O operations. Tells the preprocessor to include the "stdio.h" header file to support input/output operations */
+#include <stdio.h> // perform I/O operations. Tells the preprocessor to include the "stdio.h" header file to support input/output operations
 
 int main() /* initialize the function main */
 {
