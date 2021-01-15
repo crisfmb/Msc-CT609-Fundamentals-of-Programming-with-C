@@ -140,7 +140,7 @@ void add_new_employee() //a primeira opção do menu pede pra chamar uma nova fu
     printf("%d", newEmployee.employee_code);
 }
 
-void display_menu() //aqui cria a função display_menu do enunciado dois. Exibe as opções do menu. só copiei e colei o menu do documento.
+void display_menu() //aqui cria a função display_menu do enunciado dois. Exibe as opções do menu. só copiei e colei.
 {
 
     int opcao;
@@ -157,7 +157,7 @@ void display_menu() //aqui cria a função display_menu do enunciado dois. Exibe
     scanf("%d", &opcao);
     switch (opcao) //decidi colocar o switch aqui e não na função main pq no enunciado diz pra você ler uma opção. foi uma escolha ja que nao foi especificado nada.
     {
-    case 1: // se a opção selecionada for a 1 faz o calculo de soma ou qualquer outra operação e chama a função de adicionar novo funcionario
+    case 1: // se a opção selecionada for a 1 faz o calculo de soma ou qualquer outra operação e imprime o valor
         add_new_employee();
         break;
     case 2: // se a opção selecionada for a 2 faz o calculo de soma ou qualquer outra operação e imprime o valor
@@ -197,4 +197,4 @@ int main() // inicia função principal
     display_menu();
 
     return 0;
-} // SOCORRO SOCORRO SOCORRO
+}
