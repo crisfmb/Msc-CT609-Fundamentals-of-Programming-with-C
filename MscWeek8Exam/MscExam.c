@@ -125,6 +125,7 @@ Nesse caso criei um modelo para armazenar as informações dos funcionários com
 {
     int employee_code;
     char employee_name[1000];
+    char employee_lastname[1000];
     int insurable_weeks;
     float gross_pay;
     float subsidy;
@@ -144,7 +145,7 @@ void display_menu() //aqui cria a função display_menu do enunciado dois. Exibe
 {
 
     int opcao;
-    printf("1. Add new employee: \n");
+    printf("\n1. Add new employee: \n");
     printf("2. Delete employee: \n");
     printf("3. View all employees in the list: \n");
     printf("4. View only qualifying employees: \n");
@@ -194,7 +195,79 @@ void display_menu() //aqui cria a função display_menu do enunciado dois. Exibe
 
 int main() // inicia função principal
 {
-    display_menu();
+    int i = 0; // variavel para o laço de repetição
+    int count = 0;
+    FILE *fpPtr; // Ponteiro que aponta para a posição do arquivo da memória
 
+    // condição que valida se o arquivo existe
+    if ((fpPtr = fopen("data.txt", "r")) == NULL)
+    {
+        printf("Arquivo não existe");
+
+        fpPtr = fopen("data.txt", "wt"); //filepointer telling output file to open for writing
+        //writes out put to screen
+    }
+    else
+    {
+
+        char c;
+        // Extract characters from file and store in character c
+        for (c = getc(fpPtr); c != EOF; c = getc(fpPtr))
+        {
+            if (c == '\n')
+            { // Increment count if this character is newline
+                count = count + 1;
+            }
+        }
+
+        // Close the file
+        fclose(fpPtr);
+        count = count + 1; //Conserta
+        printf("The file has %d lines\n ", count);
+
+        FILE *fptr2;
+        struct Employee RECS[count];
+        // condição que valida se o arquivo existe
+        if ((fptr2 = fopen("data.txt", "r")) != NULL)
+        {
+            for (i = 0; !feof(fptr2); i++)
+            {
+                fscanf(fptr2, "%d %s %s %d %f", &RECS[i].employee_code, RECS[i].employee_lastname, RECS[i].employee_name, &RECS[i].insurable_weeks, &RECS[i].gross_pay);
+
+                //IFS DE GROSS PAY
+                //float subsidy = 1;
+
+                RECS[i].subsidy = 0;
+                if (RECS[i].insurable_weeks >= 1 && RECS[i].insurable_weeks <= 5)
+                {
+                    if (RECS[i].gross_pay > 0 && RECS[i].gross_pay <= 151.50)
+                    {
+                        RECS[i].subsidy = 0.0;
+                    }
+                    else if (RECS[i].gross_pay > 151.50 && RECS[i].gross_pay <= 203)
+                    {
+                        RECS[i].subsidy = 203.0;
+                    }
+                    else if (RECS[i].gross_pay > 203 && RECS[i].gross_pay <= 300)
+                    {
+                        RECS[i].subsidy = 250.0;
+                    }
+                    else if (RECS[i].gross_pay > 300 && RECS[i].gross_pay <= 400)
+                    {
+                        RECS[i].subsidy = 300.0;
+                    }
+                    else if (RECS[i].gross_pay > 400 && RECS[i].gross_pay <= 1462)
+                    {
+                        RECS[i].subsidy = 350.0;
+                    }
+                }
+
+                printf("\n%d %s %s %d %.2f %.2f", RECS[i].employee_code, RECS[i].employee_lastname, RECS[i].employee_name, RECS[i].insurable_weeks, RECS[i].gross_pay, RECS[i].subsidy);
+            }
+        }
+    }
+
+    display_menu();
+    fclose(fpPtr);
     return 0;
 }

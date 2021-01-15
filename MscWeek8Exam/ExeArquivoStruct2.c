@@ -6,11 +6,20 @@ struct alumnus
 {
     int yearGraduated;
     char firstName[30];
-    char lastName[30];
+    float salario;
 };
+
+struct alumnus *records;
+
+void resizeArray(size_t n)
+{
+    /* TODO: Handle reallocations errors. */
+    records = realloc(records, n * sizeof *records);
+}
 
 int main()
 {
+    system("clear");
     int i = 0; // variavel para o laço de repetição
     int count = 0;
     FILE *fpPtr; // Ponteiro que aponta para a posição do arquivo da memória
@@ -42,14 +51,18 @@ int main()
 
     FILE *fptr2;
     struct alumnus RECS[count];
+    records = (struct alumnus *)malloc(sizeof(struct alumnus) * count);
+
+    records[0].yearGraduated = 2020;
+    printf("%d", records[0].yearGraduated);
 
     // condição que valida se o arquivo existe
     if ((fptr2 = fopen("Test.txt", "r")) != NULL)
     {
         for (i = 0; !feof(fptr2); i++)
         {
-            fscanf(fptr2, "%d %s %s", &RECS[i].yearGraduated, RECS[i].firstName, RECS[i].lastName);
-            printf("\n%d %s %s", RECS[i].yearGraduated, RECS[i].firstName, RECS[i].lastName);
+            fscanf(fptr2, "%d %s %f", &RECS[i].yearGraduated, RECS[i].firstName, &RECS[i].salario);
+            printf("\n%d %s %f", RECS[i].yearGraduated, RECS[i].firstName, RECS[i].salario);
         }
     }
 
@@ -58,6 +71,8 @@ int main()
     2-Criar um array fixo de struct
     3-Criar um array dinamico de structs
     */
+
+    free(records);
 
     return 0;
 }
